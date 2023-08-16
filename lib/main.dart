@@ -1,4 +1,5 @@
 import 'package:course_dilaundry/config/app_colors.dart';
+import 'package:course_dilaundry/pages/auth/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,11 +41,7 @@ class MyApp extends StatelessWidget {
           ),
         )),
       ),
-      home: Scaffold(
-        body: Center(
-          child: Text("Hello World"),
-        ),
-      ),
+      home: RegisterPage(),
     );
   }
 }

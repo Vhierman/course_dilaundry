@@ -41,6 +41,7 @@ dependencies:
   http: ^0.13.5
   intl: ^0.18.1
   shared_preferences: ^2.2.0
+  d_input: ^0.1.1
 
 dev_dependencies:
   flutter_test:
