@@ -1,7 +1,11 @@
+import 'dart:ui';
+
 import 'package:course_dilaundry/config/app.constants.dart';
 import 'package:course_dilaundry/config/app_assets.dart';
 import 'package:course_dilaundry/config/app_colors.dart';
+import 'package:d_button/d_button.dart';
 import 'package:d_input/d_input.dart';
+import 'package:d_view/d_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -20,6 +24,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final edtPassword = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
+  execute() {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +33,7 @@ class _RegisterPageState extends State<RegisterPage> {
         fit: StackFit.expand,
         children: [
           Image.asset(
-            AppAssets.bgAuthPrima,
+            AppAssets.bgAuthFactory,
             fit: BoxFit.cover,
           ),
           Align(
@@ -47,44 +53,155 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 40),
+            padding: const EdgeInsets.fromLTRB(30, 60, 30, 30),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  children: [
-                    Text(
-                      AppConstants.appName,
-                      style: GoogleFonts.poppins(
-                        fontSize: 40,
-                        color: Colors.red[900],
-                        fontWeight: FontWeight.w500,
+                Padding(
+                  padding: const EdgeInsets.only(top: 30),
+                  child: Column(
+                    children: [
+                      Text(
+                        AppConstants.appName,
+                        style: GoogleFonts.poppins(
+                          fontSize: 40,
+                          color: Colors.red[900],
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
-                    ),
-                    Container(
-                      height: 8,
-                      width: 80,
-                      decoration: BoxDecoration(
-                        color: AppColors.secondary.withOpacity(0.5),
-                        borderRadius: BorderRadius.circular(30),
+                      Container(
+                        height: 8,
+                        width: 80,
+                        decoration: BoxDecoration(
+                          color: AppColors.secondary.withOpacity(0.5),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Form(
                     key: formKey,
                     child: Column(
                       children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: DInput(
-                                controller: edtUsername,
-                                fillColor: Colors.white70,
-                                hint: 'Username',
-                                radius: BorderRadius.circular(10),
+                        IntrinsicHeight(
+                          child: Row(
+                            children: [
+                              AspectRatio(
+                                aspectRatio: 1,
+                                child: Material(
+                                  color: Colors.white70,
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: const Icon(
+                                    Icons.person,
+                                    color: Colors.green,
+                                  ),
+                                ),
                               ),
-                            )
-                          ],
+                              DView.spaceWidth(10),
+                              Expanded(
+                                child: DInput(
+                                  controller: edtUsername,
+                                  fillColor: Colors.white70,
+                                  hint: 'Username',
+                                  radius: BorderRadius.circular(10),
+                                  validator: (input) =>
+                                      input == '' ? "Dont Empty" : null,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        DView.spaceHeight(16),
+                        IntrinsicHeight(
+                          child: Row(
+                            children: [
+                              AspectRatio(
+                                aspectRatio: 1,
+                                child: Material(
+                                  color: Colors.white70,
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: const Icon(
+                                    Icons.mail,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ),
+                              DView.spaceWidth(10),
+                              Expanded(
+                                child: DInput(
+                                  controller: edtEmail,
+                                  fillColor: Colors.white70,
+                                  hint: 'Email',
+                                  radius: BorderRadius.circular(10),
+                                  validator: (input) =>
+                                      input == '' ? "Dont Empty" : null,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        DView.spaceHeight(16),
+                        IntrinsicHeight(
+                          child: Row(
+                            children: [
+                              AspectRatio(
+                                aspectRatio: 1,
+                                child: Material(
+                                  color: Colors.white70,
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: const Icon(
+                                    Icons.key,
+                                    color: Colors.green,
+                                  ),
+                                ),
+                              ),
+                              DView.spaceWidth(10),
+                              Expanded(
+                                child: DInputPassword(
+                                  controller: edtPassword,
+                                  fillColor: Colors.white70,
+                                  hint: 'Password',
+                                  radius: BorderRadius.circular(10),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        DView.spaceHeight(16),
+                        IntrinsicHeight(
+                          child: Row(
+                            children: [
+                              AspectRatio(
+                                aspectRatio: 1,
+                                child: DButtonFlat(
+                                  onClick: () {
+                                    // Navigator.pop(context);
+                                  },
+                                  padding: const EdgeInsets.all(0),
+                                  radius: 10,
+                                  mainColor: Colors.white70,
+                                  child: const Text(
+                                    'LOG',
+                                    style: TextStyle(
+                                      color: Colors.green,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              DView.spaceWidth(10),
+                              Expanded(
+                                child: ElevatedButton(
+                                  onPressed: () => execute(),
+                                  style: const ButtonStyle(
+                                    alignment: Alignment.centerLeft,
+                                  ),
+                                  child: const Text('Register'),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     )),

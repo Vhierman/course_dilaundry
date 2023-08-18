@@ -1,5 +1,5 @@
 class AppConstants {
-  static const appName = 'HRD-GA';
+  static const appName = 'LEMBOR';
 
   /// _host = 'http://192.168.8.115:8000';
   static const _host = 'http://192.168.8.115:8000';
